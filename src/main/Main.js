@@ -5,22 +5,22 @@ import Navigation from "./navigation/Navigation";
 class Main extends React.Component {
 
   state = {
-    items: [],
+    searchKey: ""
   }
 
-  setItems = items => {
-    this.setState({ items })
+  setItems = searchKey => {
+    this.setState({ searchKey })
   }
 
-  onSearchButtonClick = () => {
-    ;
+  onSearchButtonClick = event => {
+    this.setState({searchKey: event.target.value});
   }
 
   render() {
     return (
       <section className="main">
         <Navigation />
-        <Items items={this.state.items}/>
+        <Items searchKey={this.state.searchKey}/>
       </section>
     )
   }
