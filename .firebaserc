@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "twine-788ae.firebaseapp.com",
-    "twine": "twine-788ae"
+    "default": "twine-788ae"
   }
 }
