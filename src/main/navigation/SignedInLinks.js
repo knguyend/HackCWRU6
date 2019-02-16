@@ -5,7 +5,7 @@ const SignedInLinks = props => {
   return (
     <ul className="right">
       <li>
-        <a onClick={alert('this has not been implemented yet')}>
+        <a onClick={() => alert('this has not been implemented yet')}>
           Sign Out
         </a>
       </li>
