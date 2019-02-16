@@ -1,5 +1,5 @@
 import React from "react";
-import "./EachItem.css";
+//import "./EachItem.css";
 
 const EachItem = ({ item }) => {
   const { id, title, description, photoUrl, condition, ownerId } = item;

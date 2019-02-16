@@ -3,11 +3,14 @@ import EachItem from "./EachItem"
 
 class Items extends React.Component {
   state = {
-      items: []
+      items: [{id: 123123, photoUrl: "", title: "Guitar", description: "Yamaha", condition:"New", ownerId: "3131"}]
     };
+
+    //var item12 = {id: 123123, photoUrl: "", title: "Guitar", description: "Yamaha", condition:"New", ownerId: "3131"}';
 
     componentDidMount() {
       this.fetchItems(this.props.searchKey);
+      //this.setState({items: [{item1}]});
     }
 
     componentWillReceiveProps(nextProps) {
@@ -36,7 +39,7 @@ class Items extends React.Component {
       <section>
         <ul className="items">
           {
-            this.state.movies.map( item  => (
+            this.state.items.map( item  => (
               <EachItem key={item.id} item={item} />
             ))
           }

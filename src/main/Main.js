@@ -1,6 +1,7 @@
 import React from "react";
-import "./Main.css"
+//import "./Main.css"
 import Navigation from "./navigation/Navigation";
+import Items from "./homepage/Items"
 
 class Main extends React.Component {
 
