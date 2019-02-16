@@ -3,7 +3,7 @@ import EachItem from "./EachItem"
 
 class Items extends React.Component {
   state = {
-      movies: []
+      items: []
     };
 
     componentDidMount() {
@@ -17,11 +17,10 @@ class Items extends React.Component {
     }
 
     //function
-    fetchItems = (searchKey) => {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => this.storeMovies(data))
-        .catch(error => console.log(error));
+    fetchItems = (searchKey) => { //TODO(ML): Create fetch response to return array of item objects
+        // .then(response => response.json())
+        // .then(data => this.storeItems(data))
+        // .catch(error => console.log(error));
     }
 
   storeItems = data => {
