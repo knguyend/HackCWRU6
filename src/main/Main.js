@@ -1,29 +1,26 @@
-import React from "react";
+import React from 'react';
 //import "./Main.css"
-import Navigation from "./navigation/Navigation";
-import Items from "./homepage/Items"
+import Items from './homepage/Items';
 
 class Main extends React.Component {
-
   state = {
-    searchKey: ""
-  }
+    searchKey: ''
+  };
 
   setItems = searchKey => {
-    this.setState({ searchKey })
-  }
+    this.setState({ searchKey });
+  };
 
   onSearchButtonClick = event => {
-    this.setState({searchKey: event.target.value});
-  }
+    this.setState({ searchKey: event.target.value });
+  };
 
   render() {
     return (
       <section className="main">
-        <Navigation />
-        <Items searchKey={this.state.searchKey}/>
+        <Items searchKey={this.state.searchKey} />
       </section>
-    )
+    );
   }
 }
 
