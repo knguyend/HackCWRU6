@@ -45,7 +45,7 @@ class NavBar extends React.Component {
               <a
                 to="/"
                 className="btn btn-floating"
-                style={{ backgroundColor: '#A37B45' }}
+                style={{ backgroundColor: '#A37B45', fontSize: 34  }}
               >
                 +
               </a>
@@ -57,16 +57,15 @@ class NavBar extends React.Component {
                 id="search"
                 onChange={this.handleChange}
                 placeholder="Search..."
+                style={{ width: '300px', color: 'white' }}
                 onKeyUp={this.checkEnter}
                 value={this.state.searchKey}
               />
             </li>
             <li>
-              {' '}
               <button onClick={this.handleSubmit}>Go</button>
               {/* <input
               type="text"
-              style={{ width: '100px' }}
               className="input"
               placeholder="Search..."
             /> */}
