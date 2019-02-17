@@ -6,7 +6,7 @@ import SignedOutLinks from './SignedOutLinks';
 const NavBar = props => {
   // TODO(ML): Add back only show appropriate links when signed in
   //   const sideLinks = props.loggedIn ? <SignedInLinks /> : <SignedOutLinks />;
-  const sideLinks = true ? <SignedInLinks /> : <SignedOutLinks />;
+  const sideLinks = false ? <SignedInLinks /> : <SignedOutLinks />;
   return (
     <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
       <div className="container">
