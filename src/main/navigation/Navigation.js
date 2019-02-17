@@ -26,7 +26,7 @@ const NavBar = props => {
             <a
               to="/"
               className="btn btn-floating"
-              style={{ backgroundColor: '#A37B45' }}
+              style={{ backgroundColor: '#A37B45', fontSize: 34 }}
             >
               +
             </a>
@@ -34,7 +34,7 @@ const NavBar = props => {
           <li>
             <input
               type="text"
-              style={{ width: '100px' }}
+              style={{ width: '300px', color: 'white' }}
               className="input"
               placeholder="Search..."
             />
