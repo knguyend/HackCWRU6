@@ -25,101 +25,7 @@ const Div = styled.div`
 
 class Items extends React.Component {
   state = {
-    items: [
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123124,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123125,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123126,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      },
-      {
-        id: 123123,
-        photoUrl: '',
-        title: 'Guitar',
-        description: 'Yamaha',
-        condition: 'New',
-        ownerId: '3131'
-      }
-    ]
-  };
-
-  //var item12 = {id: 123123, photoUrl: "", title: "Guitar", description: "Yamaha", condition:"New", ownerId: "3131"}';
-
-  componentDidMount() {
-    this.fetchItems(this.props.searchKey);
-    //this.setState({items: [{item1}]});
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.searchKey !== nextProps.searchKey) {
-      this.fetchItems(nextProps.searchKey);
-    }
-  }
-
-  //function
-  fetchItems = searchKey => {
-    //TODO(ML): Create fetch response to return array of item objects
-    // .then(response => response.json())
-    // .then(data => this.storeItems(data))
-    // .catch(error => console.log(error));
+    items: []
   };
 
   storeItems = data => {
@@ -139,7 +45,6 @@ class Items extends React.Component {
 
   render() {
     return (
-      // TODO(ML): Change guitar to change dynamically
       <FirestoreCollection
         path="items"
         filter={
