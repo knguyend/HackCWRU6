@@ -2,6 +2,11 @@ import React from "react";
 import EachItem from "./EachItem"
 import {Route , NavLink} from 'react-router-dom';
 import styled from 'styled-components';
+import { FirestoreCollection } from 'react-firestore';
+
+const Loading = () => {
+  return <div> Loading... </div>;
+};
 
 const Div = styled.div`
   height: 600px;
@@ -13,7 +18,7 @@ const Div = styled.div`
     flex-flow: row wrap;
     align-content: space-around;
     justify-content: center;
-    height: 100%;
+    height: 33%;
   }
 `;
 
@@ -117,29 +122,57 @@ class Items extends React.Component {
   };
 
   storeItems = data => {
-    const items = data.results.map(result => {
-      const { id, photoUrl, title, description, condition, ownerId } = result;
-      return { id, photoUrl, title, description, condition, ownerId };
-    });
+    const items = data.results
+      .map(result => {
+        const { id, photoUrl, title, description, condition, ownerId } = result;
+        return { id, photoUrl, title, description, condition, ownerId };
+      })
+      .slice(0, 9);
     this.setState({ items });
   };
 
   render() {
     return (
-      <Div>
-        <ul className="items">
-          {
-            this.state.items.map( item  => (
-            <NavLink to={`item/${item.id}`}>
-                <div>
-                    <EachItem key={item.id} item={item} />
-                </div>
-            </NavLink>
-              
-            ))
-          }
-        </ul>
-      </Div>
+      // TODO(ML): Change guitar to change dynamically
+      <FirestoreCollection
+        path="items"
+        filter={['title', '==', 'Guitar']}
+        render={({ isLoading, data }) => {
+          return isLoading ? (
+            <Loading />
+          ) : (
+            <Div>
+              <ul className="items">
+                {data.slice(0, 3).map(item => (
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
+                ))}
+              </ul>
+              <ul className="items">
+                {data.slice(3, 6).map(item => (
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
+                ))}
+              </ul>
+              <ul className="items">
+                {data.slice(6, 9).map(item => (
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
+                ))}
+              </ul>
+            </Div>
+          );
+        }}
+      />
     );
   }
 }

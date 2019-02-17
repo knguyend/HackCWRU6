@@ -5,8 +5,14 @@ import styled from 'styled-components';
 
 const Li = styled.li`
   list-style-type: none;
-  height: 33%;
-  width: 33%;
+  height: 90%;
+  width: 30%;
+  max-width: 300px;
+  margin: 10px;
+  background: linear-gradient(
+    hsla(104, 28%, 36%, 0.35),
+    hsla(104, 28%, 26%, 0.5)
+  );
 
   .item-wrapper {
     border: 3px solid green;
@@ -15,7 +21,7 @@ const Li = styled.li`
 
   .imgDiv {
     height: 67%;
-    background-image: url(${guitar});
+    background-image: url(${props => {console.log(props); return props.url}});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -26,23 +32,26 @@ const Li = styled.li`
   }
 
   h2 {
+    display: inline-block;
     margin: 0px;
     font-size: 2em;
+    font-weight: bold;
   }
 `;
 
 const EachItem = ({ item }) => {
-  const { id, title, description, photoUrl, condition, ownerId } = item;
+  const { id, title, description, photoURL, condition, ownerId } = item;
 
   return (
-    <Li className="item">
+    <Li url={photoURL} className="item">
       <div className="item-wrapper">
         <div className="imgDiv" />
         <div className="item-info">
           <h2>{title}</h2>
-          <span className="description">{description}</span>
           <br />
-          <span className="condition">Condition: {condition}</span>
+          <span className="description">
+            {description} / {condition}
+          </span>
         </div>
       </div>
     </Li>
