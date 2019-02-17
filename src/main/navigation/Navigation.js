@@ -1,16 +1,25 @@
 import React from 'react';
-import { Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
+import styled from 'styled-components';
 
 const firebase = window.firebase;
 
+const Div = styled.div`
+  button {
+    margin: 0px 25px;
+  }
+`;
+
 class NavBar extends React.Component {
-  state = { searchKey: '',};
+  state = { searchKey: '' };
 
   handleSubmit = e => {
     e && e.preventDefault();
-    this.props.setItems(this.state.searchKey, () => this.props.history.push('/'));
+    this.props.setItems(this.state.searchKey, () =>
+      this.props.history.push('/')
+    );
   };
 
   handleChange = e => {
@@ -30,7 +39,7 @@ class NavBar extends React.Component {
     );
     return (
       <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
-        <div className="container">
+        <Div className="container">
           <Link
             // TECHDEBT(ML): Link element should not have this onclick to erase searchKey
             onClick={() =>
@@ -77,7 +86,7 @@ class NavBar extends React.Component {
             </li>
           </ul>
           {sideLinks}
-        </div>
+        </Div>
       </nav>
     );
   }
