@@ -2,6 +2,7 @@ import React from 'react';
 //import "./EachItem.css";
 import guitar from './guitar.png';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 const Li = styled.li`
   list-style-type: none;
@@ -13,6 +14,7 @@ const Li = styled.li`
     hsla(104, 28%, 36%, 0.35),
     hsla(104, 28%, 26%, 0.5)
   );
+  cursor: pointer;
 
   .item-wrapper {
     border: 3px solid green;
@@ -21,7 +23,7 @@ const Li = styled.li`
 
   .imgDiv {
     height: 67%;
-    background-image: url(${props => {console.log(props); return props.url}});
+    background-image: url(${props => props.url}});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -39,23 +41,46 @@ const Li = styled.li`
   }
 `;
 
-const EachItem = ({ item }) => {
-  const { id, title, description, photoURL, condition, ownerId } = item;
+class EachItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false
+    };
+  }
 
-  return (
-    <Li url={photoURL} className="item">
-      <div className="item-wrapper">
-        <div className="imgDiv" />
-        <div className="item-info">
-          <h2>{title}</h2>
-          <br />
-          <span className="description">
-            {description} / {condition}
-          </span>
+  handleOnClick = () => {
+    this.setState({ redirect: true });
+  };
+
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to={`item/${this.props.item.id}`} push />;
+    }
+
+    const {
+      id,
+      title,
+      description,
+      photoURL,
+      condition,
+      ownerId
+    } = this.props.item;
+    return (
+      <Li url={photoURL} className="item" onClick={this.handleOnClick}>
+        <div className="item-wrapper">
+          <div className="imgDiv" />
+          <div className="item-info">
+            <h2>{title}</h2>
+            <br />
+            <span className="description">
+              {description} / {condition}
+            </span>
+          </div>
         </div>
-      </div>
-    </Li>
-  );
-};
+      </Li>
+    );
+  }
+}
 
 export default EachItem;
