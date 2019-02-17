@@ -8,12 +8,12 @@ export const Loading = () => {
   return <div> Loading... </div>;
 };
 
-
 const Div = styled.div`
-  height: 600px;
+  height: 800px;
   background-color: rgba(75, 75, 250, 0.1);
   padding: 0px;
   margin: 0px;
+  min-width: 815px;
   ul {
     display: flex;
     flex-flow: row wrap;

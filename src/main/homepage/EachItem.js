@@ -14,7 +14,10 @@ const Li = styled.li`
     hsla(104, 28%, 36%, 0.35),
     hsla(104, 28%, 26%, 0.5)
   );
+  text-align: center;
   cursor: pointer;
+  font-size: 100%;
+  overflow: auto;
 
   .item-wrapper {
     border: 3px solid green;
@@ -73,9 +76,9 @@ class EachItem extends React.Component {
           <div className="item-info">
             <h2>{title}</h2>
             <br />
-            <span className="description">
-              {description} / {condition}
-            </span>
+            <p className="description">
+              {description} / <em>{condition} condition</em>
+            </p>
           </div>
         </div>
       </Li>
