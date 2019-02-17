@@ -23,7 +23,11 @@ class NavBar extends React.Component {
   // TODO(ML): Add back only show appropriate links when signed in
   //   const sideLinks = props.loggedIn ? <SignedInLinks /> : <SignedOutLinks />;
   render() {
-    const sideLinks = firebase.auth().getUid() ? <SignedInLinks /> : <SignedOutLinks />;
+    const sideLinks = firebase.auth().getUid() ? (
+      <SignedInLinks />
+    ) : (
+      <SignedOutLinks />
+    );
     return (
       <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
         <div className="container">
@@ -48,6 +52,7 @@ class NavBar extends React.Component {
                 to="/"
                 className="btn btn-floating"
                 style={{ backgroundColor: '#A37B45', fontSize: 34 }}
+                onClick={this.props.handleClickPost}
               >
                 +
               </button>

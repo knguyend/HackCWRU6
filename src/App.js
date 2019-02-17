@@ -7,10 +7,12 @@ import ItemDetails from './main/itemDetails/ItemDetails';
 import Main from './main/homepage/Main';
 import NavBar from './main/navigation/Navigation';
 import SignIn from './SignIn';
+import PostItem from './PostItem';
 
 class App extends Component {
   state = {
-    searchKey: ''
+    searchKey: '',
+    popup: false
   };
 
   setItems = searchKey => {
@@ -21,11 +23,25 @@ class App extends Component {
     this.setState({ searchKey: event.target.value });
   };
 
+  handleClickPost = e => {
+    this.setState({ popup: true });
+  };
+
+  closePopup = e => {
+    this.setState({ popup: false });
+  };
+
   render() {
+    const Popup = this.state.popup ? (
+      <PostItem closePopup={this.closePopup} />
+    ) : null;
     return (
       <BrowserRouter>
         <div>
-          <NavBar setItems={this.setItems} />
+          <NavBar
+            setItems={this.setItems}
+            handleClickPost={this.handleClickPost}
+          />
           <Switch>
             <Route
               path="/"
@@ -43,6 +59,7 @@ class App extends Component {
               )}
             />
           </Switch>
+          {Popup}
         </div>
       </BrowserRouter>
     );
