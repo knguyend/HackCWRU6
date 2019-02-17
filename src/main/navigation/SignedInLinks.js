@@ -1,23 +1,23 @@
 import React from 'react';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect, withRouter } from 'react-router-dom';
+import { Firestore, FirestoreDocument } from 'react-firestore';
 
 const firebase = window.firebase;
 
 class SignedInLinks extends React.Component {
-  state = {signedIn: firebase.auth().getUid() ? true : false}
+  // state = {signedIn: firebase.auth().getUid() ? true : false}
 
   //  TECHDEBT(ML): This logic should not be here
   signOut = async () => {
     try {
       await firebase.auth().signOut();
-      this.setState({signedIn: false});
+      this.props.history.push('/');
     } catch (e) {
       console.error(e);
     }
   };
 
   render() {
-    if (!this.state.signedIn) return <Redirect to='/' />;
     return (
       <ul className="right">
         <li>
@@ -29,7 +29,10 @@ class SignedInLinks extends React.Component {
             className="btn btn-floating"
             style={{ backgroundColor: '#A37B45' }}
           >
-            {'lamchiminhmark@gmail.com'.substring(0, 2).toUpperCase()}
+            <FirestoreDocument
+              path={`users/${firebase.auth().getUid()}`}
+              render={({ isLoading, data }) => (isLoading ? '' : data.initials)}
+            />
           </NavLink>
         </li>
       </ul>
@@ -37,4 +40,4 @@ class SignedInLinks extends React.Component {
   }
 }
 
-export default SignedInLinks;
+export default withRouter(SignedInLinks);

@@ -8,6 +8,7 @@ import Main from './main/homepage/Main';
 import NavBar from './main/navigation/Navigation';
 import SignIn from './SignIn';
 import PostItem from './PostItem';
+import SignUp from './SignUp';
 
 class App extends Component {
   state = {
@@ -15,8 +16,8 @@ class App extends Component {
     popup: false
   };
 
-  setItems = searchKey => {
-    this.setState({ searchKey });
+  setItems = (searchKey, callback) => {
+    this.setState({ searchKey }, callback);
   };
 
   onSearchButtonClick = event => {
@@ -52,6 +53,7 @@ class App extends Component {
             />
             <Route path="/item/:id" component={ItemDetails} />
             <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-up" component={SignUp} />
             <Route
               path="/"
               render={props => (

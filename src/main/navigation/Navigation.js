@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter} from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
 const firebase = window.firebase;
 
 class NavBar extends React.Component {
-  state = { searchKey: '' };
+  state = { searchKey: '',};
 
   handleSubmit = e => {
     e && e.preventDefault();
-    this.props.setItems(this.state.searchKey);
+    this.props.setItems(this.state.searchKey, () => this.props.history.push('/'));
   };
 
   handleChange = e => {
@@ -83,4 +83,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

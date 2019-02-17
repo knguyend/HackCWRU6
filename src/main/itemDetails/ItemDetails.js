@@ -8,7 +8,6 @@ const ItemDetails = ({ match }) => {
     <FirestoreDocument
       path={`items/${match.params.id}`}
       render={({ isLoading, data }) => {
-        console.log(data);
         return isLoading ? <Loading /> : <ItemDetailsComponent data={data}/>;
       }}
     />

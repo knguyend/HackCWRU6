@@ -1,18 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 const firebase = window.firebase;
-
-const authenticate = e => {
-  e.preventDefault();
-  firebase
-    .auth()
-    .signInWithEmailAndPassword('coltonpotter48@yahoo.com', 'whatevershit')
-    .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-    });
-  console.log(e.target);
-};
 
 export default class SignIn extends React.Component {
   state = {email: '', password: '', signedIn: firebase.auth().getUid() ? true : false}
@@ -35,13 +23,14 @@ export default class SignIn extends React.Component {
   }
 
   render() {
+    if (firebase.auth().getUid()) return <Redirect to='/' />
     const {email, password} = this.state;
     if (this.state.signedIn) return <Redirect to="/" />;
     return (
       <div className="signin">
         <h2>Sign In</h2>
         <form>
-          <input type="text" name="input-email" id="input-email" value={email} onChange={this.handleChange('email')}/>
+          <input type="email" name="input-email" id="input-email" value={email} onChange={this.handleChange('email')}/>
           <label htmlFor="input-email">Email Address</label>
           <input type="password" name="input-password" id="input-password" value={password} onChange={this.handleChange('password')}/>
           <label htmlFor="input-password">Password</label>
@@ -51,9 +40,9 @@ export default class SignIn extends React.Component {
         </form>
         <p>
           Dont have an account? Sign up{' '}
-          <a href="http://twineSignUp.htm" target="_blank">
+          <Link to="/sign-up">
             here
-          </a>
+          </Link>
         </p>
       </div>
     );
