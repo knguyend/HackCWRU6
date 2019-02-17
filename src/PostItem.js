@@ -15,6 +15,10 @@ const Div = styled.div`
   button {
     margin: 15px;
   }
+
+  select {
+    display: block;
+  }
 `;
 
 class PostItem extends React.Component {
@@ -32,6 +36,7 @@ class PostItem extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.closePopup(e);
   };
 
   render() {
