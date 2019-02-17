@@ -6,12 +6,25 @@ import Main from './main/Main';
 import NavBar from './main/navigation/Navigation';
 
 class App extends Component {
+  state = {
+    searchKey: ''
+  };
+
+  setItems = searchKey => {
+    this.setState({ searchKey });
+  };
+
+  onSearchButtonClick = event => {
+    this.setState({ searchKey: event.target.value });
+  };
+
+
   render() {
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
-          <Main />
+          <NavBar setItems={this.setItems}/>
+          <Main searchKey={this.state.searchKey}/>
         </div>
       </BrowserRouter>
     );
