@@ -9,16 +9,39 @@ import NavBar from './main/navigation/Navigation';
 import SignIn from './SignIn';
 
 class App extends Component {
+  state = {
+    searchKey: ''
+  };
+
+  setItems = searchKey => {
+    this.setState({ searchKey });
+  };
+
+  onSearchButtonClick = event => {
+    this.setState({ searchKey: event.target.value });
+  };
+
   render() {
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
+          <NavBar setItems={this.setItems} />
           <Switch>
-            <Route path="/" exact component={Main} />
+            <Route
+              path="/"
+              exact
+              render={props => (
+                <Main {...props} searchKey={this.state.searchKey} />
+              )}
+            />
             <Route path="/item/:id" component={ItemDetails} />
             <Route path="/sign-in" component={SignIn} />
-            <Route path="/" component={Main} />
+            <Route
+              path="/"
+              render={props => (
+                <Main {...props} searchKey={this.state.searchKey} />
+              )}
+            />
           </Switch>
         </div>
       </BrowserRouter>

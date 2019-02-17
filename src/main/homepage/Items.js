@@ -141,7 +141,11 @@ class Items extends React.Component {
       // TODO(ML): Change guitar to change dynamically
       <FirestoreCollection
         path="items"
-        filter={['title', '==', 'Guitar']}
+        filter={
+          this.props.searchKey
+            ? ['title', '==', this.props.searchKey]
+            : undefined
+        }
         render={({ isLoading, data }) => {
           return isLoading ? (
             <Loading />
