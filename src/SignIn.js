@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 const firebase = window.firebase;
 
 const authenticate = e => {
@@ -14,6 +15,7 @@ const authenticate = e => {
 };
 
 const SignIn = props => {
+  if (firebase.auth().getUid()) return <Redirect to="/" />;
   return (
     <div className="signin">
       <h2>Sign In</h2>

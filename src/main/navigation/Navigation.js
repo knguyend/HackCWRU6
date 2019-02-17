@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
+const firebase = window.firebase;
+
 const NavBar = props => {
   // TODO(ML): Add back only show appropriate links when signed in
   //   const sideLinks = props.loggedIn ? <SignedInLinks /> : <SignedOutLinks />;
-  const sideLinks = false ? <SignedInLinks /> : <SignedOutLinks />;
+  const sideLinks = firebase.auth().getUid() ? <SignedInLinks /> : <SignedOutLinks />;
   return (
     <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
       <div className="container">
