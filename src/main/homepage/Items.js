@@ -1,5 +1,6 @@
 import React from "react";
 import EachItem from "./EachItem"
+import {Route , NavLink} from 'react-router-dom';
 
 class Items extends React.Component {
   state = {
@@ -40,7 +41,12 @@ class Items extends React.Component {
         <ul className="items">
           {
             this.state.items.map( item  => (
-              <EachItem key={item.id} item={item} />
+            <NavLink to={`item/${item.id}`}>
+                <div>
+                    <EachItem key={item.id} item={item} />
+                </div>
+            </NavLink>
+              
             ))
           }
         </ul>
