@@ -4,9 +4,10 @@ import {Route , NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import { FirestoreCollection } from 'react-firestore';
 
-const Loading = () => {
+export const Loading = () => {
   return <div> Loading... </div>;
 };
+
 
 const Div = styled.div`
   height: 600px;

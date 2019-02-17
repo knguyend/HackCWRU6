@@ -1,12 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { FirestoreDocument } from 'react-firestore';
+import { Loading } from '../homepage/Items';
 
 const ItemDetails = ({ match }) => {
-    return (
-        <h1>
-            This is detail of item {match.params.id}
-        </h1 >
-    )
-        
-}
+  return (
+    <FirestoreDocument
+      path={`items/${match.params.id}`}
+      render={({ isLoading, data }) => {
+        console.log(data);
+        return isLoading ? <Loading /> : <div data={data} />;
+      }}
+    />
+  );
+};
 
 export default ItemDetails;
