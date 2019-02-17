@@ -4,9 +4,10 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { FirestoreCollection } from 'react-firestore';
 
-const Loading = () => {
+export const Loading = () => {
   return <div> Loading... </div>;
 };
+
 
 const Div = styled.div`
   height: 600px;
@@ -141,7 +142,11 @@ class Items extends React.Component {
       // TODO(ML): Change guitar to change dynamically
       <FirestoreCollection
         path="items"
-        filter={['title', '==', 'Guitar']}
+        filter={
+          this.props.searchKey
+            ? ['title', '==', this.props.searchKey]
+            : undefined
+        }
         render={({ isLoading, data }) => {
           return isLoading ? (
             <Loading />
