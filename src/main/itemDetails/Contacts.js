@@ -7,6 +7,7 @@ const Contacts = ({ data }) => (
     render={({ isLoading, data: owner }) => {
       if (!isLoading) {
         const number = owner.contacts;
+        console.log('number', number);
         const name = owner.firstName + ' ' + owner.lastName;
         const displayedNumber =
           '(' +
