@@ -1,6 +1,7 @@
 import React from 'react';
 import { FirestoreDocument } from 'react-firestore';
 import { Loading } from '../homepage/Items';
+import ItemDetailsComponent from './ItemDetailComponent'
 
 const ItemDetails = ({ match }) => {
   return (
@@ -8,7 +9,7 @@ const ItemDetails = ({ match }) => {
       path={`items/${match.params.id}`}
       render={({ isLoading, data }) => {
         console.log(data);
-        return isLoading ? <Loading /> : <div data={data} />;
+        return isLoading ? <Loading /> : <ItemDetailsComponent data={data}/>;
       }}
     />
   );
