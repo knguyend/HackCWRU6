@@ -1,14 +1,16 @@
 import React from 'react';
 //import "./Main.css"
-import Items from './homepage/Items';
+import Items from './Items';
+import ProductPitch from './ProductPitch';
 import styled from 'styled-components';
 
 class Main extends React.Component {
   render() {
     return (
-      <section className="main">
+      <div className="main">
         <Items searchKey={this.props.searchKey} />
-      </section>
+        <ProductPitch />
+      </div>
     );
   }
 }
