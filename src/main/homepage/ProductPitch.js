@@ -6,9 +6,13 @@ const Div = styled.div`
 
   h1 {
     color: green;
-    text-align: center;
     text-shadow: 2px 2px 2px lightblue;
     font-weight: bold;
+  }
+
+  h1,
+  h4 {
+    text-align: center;
   }
 `;
 
@@ -16,12 +20,13 @@ const ProductPitch = props => {
   return (
     <Div className="productpitch">
       <h1>Have Something You Don't Need?</h1>
-      <h4>Need something you don't have?</h4>
+      <h4>Or do you need something you don't have?</h4>
       <br />
       <p>
-        Twine is a way to donate your stuff to students on your campus that
-        might need it and get things for yourself.{' '}
-        <a href="/sign-up">Sign up here</a>
+        Twine is a way to donate your stuff to other students on campus that
+        might need it. You can also look for things you need yourself. We
+        believe that people and communites are stronger when they support each
+        other. <a href="/sign-up">Sign up here</a>
       </p>
     </Div>
   );
