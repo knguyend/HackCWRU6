@@ -1,5 +1,6 @@
-import React from 'react';
-import EachItem from './EachItem';
+import React from "react";
+import EachItem from "./EachItem"
+import {Route , NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import { FirestoreCollection } from 'react-firestore';
 
@@ -143,17 +144,29 @@ class Items extends React.Component {
             <Div>
               <ul className="items">
                 {data.slice(0, 3).map(item => (
-                  <EachItem key={item.id} item={item} />
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
                 ))}
               </ul>
               <ul className="items">
                 {data.slice(3, 6).map(item => (
-                  <EachItem key={item.id} item={item} />
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
                 ))}
               </ul>
               <ul className="items">
                 {data.slice(6, 9).map(item => (
-                  <EachItem key={item.id} item={item} />
+                  <NavLink to={`item/${item.id}`}>
+                    <div>
+                      <EachItem key={item.id} item={item} />
+                    </div>
+                   </NavLink>
                 ))}
               </ul>
             </Div>
