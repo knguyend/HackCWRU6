@@ -1,6 +1,4 @@
 import React from 'react';
-//import "./EachItem.css";
-import guitar from './guitar.png';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 
@@ -14,6 +12,7 @@ const Li = styled.li`
     hsla(104, 28%, 36%, 0.35),
     hsla(104, 28%, 26%, 0.5)
   );
+  box-shadow: 3px 4px 16px black;
   text-align: center;
   cursor: pointer;
   font-size: 100%;
@@ -56,6 +55,30 @@ class EachItem extends React.Component {
     this.setState({ redirect: true });
   };
 
+  handleMouseDown = e => {
+    const target = e.target;
+    const results = document.querySelectorAll('.item');
+    results.forEach(node => {
+      if (node.contains(target)) {
+        node.style.boxShadow = '3px 3px 8px black';
+        node.style.background =
+          'linear-gradient(hsla(104, 28%, 36%, 0.5), hsla(104,28%,26%,0.75) )';
+      }
+    });
+  };
+
+  handleMouseUp = e => {
+    const target = e.target;
+    const results = document.querySelectorAll('.item');
+    results.forEach(node => {
+      if (node.contains(target)) {
+        node.style.boxShadow = '3px 4px 16px black';
+        node.style.background =
+          'linear-gradient(hsla(104, 28%, 36%, 0.25), hsla(104,28%,26%,0.5) )';
+      }
+    });
+  };
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={`item/${this.props.item.id}`} push />;
@@ -70,7 +93,13 @@ class EachItem extends React.Component {
       ownerId
     } = this.props.item;
     return (
-      <Li url={photoURL} className="item" onClick={this.handleOnClick}>
+      <Li
+        url={photoURL}
+        className="item"
+        onClick={this.handleOnClick}
+        onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseUp={this.handleMouseUp}
+      >
         <div className="item-wrapper">
           <div className="imgDiv" />
           <div className="item-info">
