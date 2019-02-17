@@ -15,7 +15,7 @@ const Li = styled.li`
 
   .imgDiv {
     height: 67%;
-    background-image: url(${guitar});
+    background-image: url(${props => {console.log(props); return props.url}});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -32,10 +32,10 @@ const Li = styled.li`
 `;
 
 const EachItem = ({ item }) => {
-  const { id, title, description, photoUrl, condition, ownerId } = item;
+  const { id, title, description, photoURL, condition, ownerId } = item;
 
   return (
-    <Li className="item">
+    <Li url={photoURL} className="item">
       <div className="item-wrapper">
         <div className="imgDiv" />
         <div className="item-info">

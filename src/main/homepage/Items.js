@@ -1,6 +1,11 @@
 import React from 'react';
 import EachItem from './EachItem';
 import styled from 'styled-components';
+import { FirestoreCollection } from 'react-firestore';
+
+const Loading = () => {
+  return <div> Loading... </div>;
+};
 
 const Div = styled.div`
   height: 600px;
@@ -125,13 +130,24 @@ class Items extends React.Component {
 
   render() {
     return (
-      <Div>
-        <ul className="items">
-          {this.state.items.map(item => (
-            <EachItem key={item.id} item={item} />
-          ))}
-        </ul>
-      </Div>
+      // TODO(ML): Change guitar to change dynamically
+      <FirestoreCollection
+        path="items"
+        filter={['title', '==', 'Guitar']}
+        render={({ isLoading, data }) => {
+          return isLoading ? (
+            <Loading />
+          ) : (
+            <Div>
+              <ul className="items">
+                {data.map(item => (
+                  <EachItem key={item.id} item={item} />
+                ))}
+              </ul>
+            </Div>
+          );
+        }}
+      />
     );
   }
 }
