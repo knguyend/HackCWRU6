@@ -42,13 +42,13 @@ class NavBar extends React.Component {
           </Link>
           <ul>
             <li>
-              <a
+              <button
                 to="/"
                 className="btn btn-floating"
                 style={{ backgroundColor: '#A37B45', fontSize: 34 }}
               >
                 +
-              </a>
+              </button>
             </li>
             <li>
               <input
@@ -60,7 +60,11 @@ class NavBar extends React.Component {
               />
             </li>
             <li>
-              <button className="btn right" onClick={this.handleSubmit}>
+              <button
+                className="btn"
+                style={{ margin: '10px' }}
+                onClick={this.handleSubmit}
+              >
                 Go
               </button>
             </li>
