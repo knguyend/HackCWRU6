@@ -10,8 +10,16 @@ const NavBar = props => {
   return (
     <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
       <div className="container">
-        <Link to="/" style={{ fontSize: 38, float: 'left' }}>
-          <em>Twine</em>
+        <Link
+          className="site-title"
+          to="/"
+          style={{
+            fontSize: 60,
+            float: 'left',
+            fontFamily: 'Rochester, cursive'
+          }}
+        >
+          twine
         </Link>
         <ul>
           <li>

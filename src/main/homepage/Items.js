@@ -12,7 +12,7 @@ const Div = styled.div`
     flex-flow: row wrap;
     align-content: space-around;
     justify-content: center;
-    height: 100%;
+    height: 33%;
   }
 `;
 
@@ -116,10 +116,12 @@ class Items extends React.Component {
   };
 
   storeItems = data => {
-    const items = data.results.map(result => {
-      const { id, photoUrl, title, description, condition, ownerId } = result;
-      return { id, photoUrl, title, description, condition, ownerId };
-    });
+    const items = data.results
+      .map(result => {
+        const { id, photoUrl, title, description, condition, ownerId } = result;
+        return { id, photoUrl, title, description, condition, ownerId };
+      })
+      .slice(0, 9);
     this.setState({ items });
   };
 
@@ -127,7 +129,17 @@ class Items extends React.Component {
     return (
       <Div>
         <ul className="items">
-          {this.state.items.map(item => (
+          {this.state.items.slice(0, 3).map(item => (
+            <EachItem key={item.id} item={item} />
+          ))}
+        </ul>
+        <ul className="items">
+          {this.state.items.slice(3, 6).map(item => (
+            <EachItem key={item.id} item={item} />
+          ))}
+        </ul>
+        <ul className="items">
+          {this.state.items.slice(6, 9).map(item => (
             <EachItem key={item.id} item={item} />
           ))}
         </ul>

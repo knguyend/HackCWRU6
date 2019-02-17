@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Li = styled.li`
   list-style-type: none;
-  height: 30%;
+  height: 90%;
   width: 30%;
   max-width: 300px;
   margin: 10px;
@@ -35,6 +35,7 @@ const Li = styled.li`
     display: inline-block;
     margin: 0px;
     font-size: 2em;
+    font-weight: bold;
   }
 `;
 
