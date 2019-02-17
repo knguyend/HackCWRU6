@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 
+const firebase = window.firebase;
+
 class NavBar extends React.Component {
   state = { searchKey: '' };
 
@@ -21,7 +23,7 @@ class NavBar extends React.Component {
   // TODO(ML): Add back only show appropriate links when signed in
   //   const sideLinks = props.loggedIn ? <SignedInLinks /> : <SignedOutLinks />;
   render() {
-    const sideLinks = false ? <SignedInLinks /> : <SignedOutLinks />;
+    const sideLinks = firebase.auth().getUid() ? <SignedInLinks /> : <SignedOutLinks />;
     return (
       <nav className="nav-wrapper" style={{ backgroundColor: '#507642' }}>
         <div className="container">
