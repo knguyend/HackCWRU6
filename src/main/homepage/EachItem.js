@@ -5,8 +5,14 @@ import styled from 'styled-components';
 
 const Li = styled.li`
   list-style-type: none;
-  height: 33%;
-  width: 33%;
+  height: 30%;
+  width: 30%;
+  max-width: 300px;
+  margin: 10px;
+  background: linear-gradient(
+    hsla(104, 28%, 36%, 0.35),
+    hsla(104, 28%, 26%, 0.5)
+  );
 
   .item-wrapper {
     border: 3px solid green;
@@ -26,6 +32,7 @@ const Li = styled.li`
   }
 
   h2 {
+    display: inline-block;
     margin: 0px;
     font-size: 2em;
   }
@@ -40,9 +47,10 @@ const EachItem = ({ item }) => {
         <div className="imgDiv" />
         <div className="item-info">
           <h2>{title}</h2>
-          <span className="description">{description}</span>
           <br />
-          <span className="condition">Condition: {condition}</span>
+          <span className="description">
+            {description} / {condition}
+          </span>
         </div>
       </div>
     </Li>
